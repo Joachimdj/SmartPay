@@ -12,7 +12,7 @@ import UIKit
     let id : Int
     let name : String
     let desc : String
-    let price : Int
+    let price : Double
     let currentAmount : Int32
     let cat : Int
     let storeId : Int64

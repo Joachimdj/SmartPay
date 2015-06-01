@@ -10,19 +10,36 @@ import UIKit
 
 class Cats: UITableViewController {
 
+    @IBOutlet weak var Basket: UIBarButtonItem!
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        super.viewDidLoad() 
+        formatter.numberStyle = .CurrencyStyle
+        formatter.locale = NSLocale(localeIdentifier: "da_DK")
+    
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(false)
+       Basket.title = "Kurv(\(formatter.stringFromNumber(basket)!))"
+        var shadow = NSShadow()
+        shadow.shadowColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        shadow.shadowOffset = CGSizeMake(0, 1)
+        var color : UIColor = UIColor(red: 220.0/255.0, green: 104.0/255.0, blue: 1.0/255.0, alpha: 1.0)
+            var color1 : UIColor = UIColor(red: 220.0/255.0, green: 104.0/255.0, blue: 1.0/255.0, alpha: 0.1)
+        var titleFont : UIFont = UIFont(name: "AmericanTypewriter", size: 12.0)!
+        
+        var attributes = [
+            NSForegroundColorAttributeName : color,
+            NSShadowAttributeName : shadow,
+            NSFontAttributeName : titleFont,
+            NSBackgroundColorAttributeName : color1
+        ]
+
+           Basket.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
     }
 
     // MARK: - Table view data source
@@ -49,9 +66,10 @@ class Cats: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        Selectedcat = CatDic[indexPath.row].id 
-        println(Selectedcat)
-         TempMenuItemDic.removeAll(keepCapacity: true)
+        Selectedcat = CatDic[indexPath.row].id  
+    }
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     /*
     // Override to support conditional editing of the table view.

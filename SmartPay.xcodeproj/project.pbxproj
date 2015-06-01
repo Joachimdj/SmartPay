@@ -28,6 +28,10 @@
 		88DFF7AD1B1687EA00F502A9 /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DFF7AB1B1687EA00F502A9 /* SQLiteDB.swift */; };
 		88DFF7AE1B1687EA00F502A9 /* String-Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DFF7AC1B1687EA00F502A9 /* String-Extras.swift */; };
 		88DFF7B51B169B6B00F502A9 /* data.db in Resources */ = {isa = PBXBuildFile; fileRef = 88DFF7B41B169B5700F502A9 /* data.db */; };
+		88E5FCD01B1BBEDC004CE73F /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E5FCCF1B1BBEDC004CE73F /* Basket.swift */; };
+		88E5FCD41B1BD363004CE73F /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E5FCD31B1BD363004CE73F /* MenuItemCell.swift */; };
+		88E5FCE21B1BE701004CE73F /* NewOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E5FCE11B1BE701004CE73F /* NewOrder.swift */; };
+		88E5FCE41B1BEEDA004CE73F /* basket.png in Resources */ = {isa = PBXBuildFile; fileRef = 88E5FCE31B1BEEDA004CE73F /* basket.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,10 @@
 		88DFF7AB1B1687EA00F502A9 /* SQLiteDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDB.swift; sourceTree = "<group>"; };
 		88DFF7AC1B1687EA00F502A9 /* String-Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extras.swift"; sourceTree = "<group>"; };
 		88DFF7B41B169B5700F502A9 /* data.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.db; sourceTree = "<group>"; };
+		88E5FCCF1B1BBEDC004CE73F /* Basket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
+		88E5FCD31B1BD363004CE73F /* MenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
+		88E5FCE11B1BE701004CE73F /* NewOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewOrder.swift; path = ../NewOrder.swift; sourceTree = "<group>"; };
+		88E5FCE31B1BEEDA004CE73F /* basket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basket.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +124,11 @@
 				88DFF76F1B1648AD00F502A9 /* Models */,
 				88DFF74A1B163EF700F502A9 /* AppDelegate.swift */,
 				88DFF7511B163EF700F502A9 /* Main.storyboard */,
+				88E5FCD31B1BD363004CE73F /* MenuItemCell.swift */,
+				88E5FCCF1B1BBEDC004CE73F /* Basket.swift */,
 				88DFF7541B163EF700F502A9 /* Images.xcassets */,
 				88DFF7561B163EF700F502A9 /* LaunchScreen.xib */,
+				88E5FCE31B1BEEDA004CE73F /* basket.png */,
 				88DFF74C1B163EF700F502A9 /* SmartPay.xcdatamodeld */,
 				88DFF7481B163EF700F502A9 /* Supporting Files */,
 			);
@@ -167,6 +178,7 @@
 				88DFF76D1B16405C00F502A9 /* Cats.swift */,
 				88DFF77F1B164F0F00F502A9 /* Menu.swift */,
 				88DFF7811B164FAA00F502A9 /* Order.swift */,
+				88E5FCE11B1BE701004CE73F /* NewOrder.swift */,
 				88DFF7831B164FBC00F502A9 /* Payments.swift */,
 				88DFF7851B164FCF00F502A9 /* Recipts.swift */,
 			);
@@ -268,6 +280,7 @@
 				88DFF7531B163EF700F502A9 /* Main.storyboard in Resources */,
 				88DFF7581B163EF700F502A9 /* LaunchScreen.xib in Resources */,
 				88DFF7551B163EF700F502A9 /* Images.xcassets in Resources */,
+				88E5FCE41B1BEEDA004CE73F /* basket.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,11 +303,14 @@
 				88DFF7731B16492000F502A9 /* Cat.swift in Sources */,
 				88DFF74E1B163EF700F502A9 /* SmartPay.xcdatamodeld in Sources */,
 				88DFF7821B164FAA00F502A9 /* Order.swift in Sources */,
+				88E5FCD41B1BD363004CE73F /* MenuItemCell.swift in Sources */,
+				88E5FCD01B1BBEDC004CE73F /* Basket.swift in Sources */,
 				88DFF7801B164F1000F502A9 /* Menu.swift in Sources */,
 				88DFF7841B164FBC00F502A9 /* Payments.swift in Sources */,
 				88DFF7791B1649ED00F502A9 /* User.swift in Sources */,
 				88DFF7861B164FCF00F502A9 /* Recipts.swift in Sources */,
 				88DFF77B1B1649FB00F502A9 /* PaymentCard.swift in Sources */,
+				88E5FCE21B1BE701004CE73F /* NewOrder.swift in Sources */,
 				88DFF7AE1B1687EA00F502A9 /* String-Extras.swift in Sources */,
 				88DFF7751B16493900F502A9 /* MenuItem.swift in Sources */,
 				88DFF76E1B16405C00F502A9 /* Cats.swift in Sources */,
@@ -500,6 +516,7 @@
 				88DFF7691B163EF700F502A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		88DFF76A1B163EF700F502A9 /* Build configuration list for PBXNativeTarget "SmartPayTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +525,7 @@
 				88DFF76C1B163EF700F502A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

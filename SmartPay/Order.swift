@@ -6,20 +6,20 @@
 //  Copyright (c) 2015 Joachim Dittman. All rights reserved.
 //
 
-import UIKit 
+import UIKit
 class Order: UITableViewController {
+    
      var data2 = [SQLRow]()
     let db = SQLiteDB.sharedInstance()
     var SelectedItems = [MenuItem]()
     override func viewDidLoad() {
-        super.viewDidLoad() 
-  
-     
+        super.viewDidLoad()  
       
-      data2 = db.query("SELECT itemID, sum(amount) as amount FROM SelectedItems LEFT JOIN MenuItems ON MenuItems.id=SelectedItems.ItemID GROUP BY MenuItems.id")
-                         tableView.reloadData()
-        
-    }
+      data2 = db.query("SELECT name, itemID, price, sum(amount) as amount FROM SelectedItems LEFT JOIN MenuItems ON MenuItems.id=SelectedItems.ItemID GROUP BY MenuItems.id")
+    tableView.reloadData()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.locale = NSLocale(localeIdentifier: "da_DK")
+                                }
     
     
     
@@ -43,6 +43,7 @@ class Order: UITableViewController {
       //  return OrderMenuItemDic.count
           return data2.count
     }
+   
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -52,77 +53,37 @@ class Order: UITableViewController {
         // Configure the cell...
       // cell.textLabel?.text = "\(OrderMenuItemDic[indexPath.row].name) x \(OrderMenuItemDic[indexPath.row].price).00 DKR"
        let row = data2[indexPath.row]
-        if let task = row["ItemID"] {
+        if let task = row["name"] {
             
-            var price =    row["amount"]
-             cell.textLabel?.text = "\(task.asString()) \(price!.asDouble()) "
+            var name =    task.asString()
+           cell.textLabel?.text = name
         }
         if let  task2 = row["price"]{
             var task1 = row["amount"]
-            
-            cell.detailTextLabel?.text = " \(task1!.asDouble()) DKR"
-          final += task2.asDouble() * task1!.asDouble()
-            println(final)
-        }
+            var finalAmountPrItem = task2.asDouble() * task1!.asDouble()
+ 
+            cell.detailTextLabel?.text = " \(formatter.stringFromNumber(finalAmountPrItem)!)"
+                  }
  
         return cell
     }
     
     @IBAction func close(sender: AnyObject) {
          self.dismissViewControllerAnimated(true, completion: nil)
-        
+ 
+    
     }
     @IBAction func Tom(sender: AnyObject) {
-    OrderMenuItemDic.removeAll(keepCapacity: true)
+        emtyBasket()
         tableView.reloadData()
-         self.dismissViewControllerAnimated(false, completion: nil)
+         
+         self.dismissViewControllerAnimated(true, completion: nil)
+     
+        
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return NO if you do not want the specified item to be editable.
-    return true
+ 
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return NO if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
     
 }

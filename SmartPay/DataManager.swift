@@ -12,14 +12,14 @@ import UIKit
 var CatDic = [Cat]()
 var MenuItemDic = [MenuItem]()
 var TempMenuItemDic = [MenuItem]()
-var OrderReciptDic = [Recipt]()
-var OrderMenuItemDic = [MenuItem]()
+var OrderReciptDic = [Recipt]() 
 var ReciptDic = [Recipt]()
 var UserDic = [User]()
 var paymentCardDic = [PaymentCard]()
 var Selectedcat = 1
 var final = 0.0
-var basket = 0.0
+var basket = 0.0 
+  var formatter = NSNumberFormatter()
  let db = SQLiteDB.sharedInstance()
  
 
@@ -43,38 +43,53 @@ var basket = 0.0
 }
 
    func loadMenuItemData(){
-    
+ 
    let sqlDelete = "Delete FROM MenuItems"
     db.execute(sqlDelete)
     
     //let sql = "CREATE TABLE MenuItems(id INTEGER PRIMARY KEY ASC, name, desc, price NUMBER, currentAmount NUMBER, cat INTEGER , storeId INTEGER)"
    //  db.execute(sql)
 
+    var i = 0
     
-    for(var i = 0; i<2;  i++){
-        var randomNumber = Int(arc4random_uniform(1000000000))
-    MenuItemDic.append(MenuItem(id:randomNumber,name:"Øl (Tuborg)", desc : "Something about", price: 20, currentAmount: 200, cat: 1, storeId:1 ))
-      randomNumber = Int(arc4random_uniform(1000000000))
+    for(var b = 0; b<10;  b++){
+     
+    MenuItemDic.append(MenuItem(id:i,name:"Øl (Tuborg)", desc : "Something about", price: 20, currentAmount: 200, cat: 1, storeId:1 ))
+        i++
     
-    MenuItemDic.append(MenuItem(id:randomNumber,name:"Toast", desc : "Something about", price: 20, currentAmount: 100, cat: 2, storeId:1 ))
-       randomNumber = Int(arc4random_uniform(1000000000))
+    MenuItemDic.append(MenuItem(id:i,name:"Toast", desc : "Something about", price: 20, currentAmount: 100, cat: 2, storeId:1 ))
+         i++
         
-    MenuItemDic.append(MenuItem(id:randomNumber,name:"Fritter", desc : "Something about", price: 30, currentAmount: 100, cat: 3, storeId:1 ))
-      randomNumber = Int(arc4random_uniform(1000000000))
-        
-    MenuItemDic.append(MenuItem(id:  randomNumber,name:"Popkorn", desc : "Something about", price: 15, currentAmount: 400, cat: 4, storeId:1 ))
-       
-      for menuItem in MenuItemDic{
-            let sql = "INSERT INTO MenuItems(id, name, desc, price, currentAmount, cat, storeId) VALUES (\(menuItem.id),'\(menuItem.name)','\(menuItem.desc)', '\(menuItem.price)', '\(menuItem.currentAmount)','\(menuItem.cat)', \(menuItem.storeId))"
-            let rc = db.execute(sql)
-        }
+    MenuItemDic.append(MenuItem(id:i,name:"Fritter", desc : "Something about", price: 30, currentAmount: 100, cat: 3, storeId:1 ))
+         i++
+    MenuItemDic.append(MenuItem(id:i,name:"Popkorn", desc : "Something about", price: 15, currentAmount: 400, cat: 4, storeId:1 ))
+        i++
+    MenuItemDic.append(MenuItem(id:i,name:"Kage", desc : "Something about", price: 10, currentAmount: 400, cat: 4, storeId:1 ))
+        i++
+   
+    }
+    for menuItem in MenuItemDic{
+        let sql = "INSERT INTO MenuItems(id, name, desc, price, currentAmount, cat, storeId) VALUES (\(menuItem.id),'\(menuItem.name)','\(menuItem.desc)', '\(menuItem.price)', '\(menuItem.currentAmount)','\(menuItem.cat)', \(menuItem.storeId))"
+        let rc = db.execute(sql)
     }
     
-       
+    
      }
 
     
+  func CalculateBasket(){
+    var data2 = db.query("SELECT  SUM(amount*price) as amount FROM SelectedItems LEFT JOIN MenuItems ON MenuItems.id=SelectedItems.ItemID ")
     
+    if let task = data2[0]["amount"] {
+        
+     basket =    task.asDouble()
+    }
+}
     
- 
+    func emtyBasket(){
+        var data2 = db.query("DELETE FROM SelectedItems");
+       basket = 0.0
+     }
+
+
     

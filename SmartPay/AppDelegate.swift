@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loadCatData();
         loadMenuItemData();
         
+
+        
         return true
     }
 
@@ -96,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
