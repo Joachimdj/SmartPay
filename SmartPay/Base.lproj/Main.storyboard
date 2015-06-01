@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gf5-H3-o7z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gf5-H3-o7z">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -304,7 +304,6 @@
         <!--Navigation Controller-->
         <scene sceneID="dkp-WQ-XSJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ygb-Yd-VD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="Gf5-H3-o7z" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7kn-Qv-l46">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -314,6 +313,7 @@
                         <segue destination="0SF-GD-Joz" kind="relationship" relationship="rootViewController" id="6Cj-Bc-81M"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ygb-Yd-VD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-164" y="520"/>
         </scene>
